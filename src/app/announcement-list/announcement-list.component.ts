@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Announcement } from '../models/Announcement.model';
 import { Subscription } from 'rxjs';
 import { AnnouncementsService } from '../services/announcements.service';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './announcement-list.component.html',
   styleUrls: ['./announcement-list.component.scss']
 })
-export class AnnouncementListComponent implements OnInit {
+export class AnnouncementListComponent implements OnInit, OnDestroy {
 
   announcements: Announcement[];
   announcementsSubscription: Subscription;
@@ -29,6 +29,16 @@ export class AnnouncementListComponent implements OnInit {
     this.router.navigate(['/announcements', 'new']);
   }
 
-  
+  onDeleteAnnouncement(announcement: Announcement) {
+    this.announcementsService.removeAnnouncement(announcement);
+  }
+
+  onViewAnnouncement(id: number) {
+    this.router.navigate(['/announcements', 'view', id]);
+  }
+
+  ngOnDestroy() {
+    this.announcementsSubscription.unsubscribe();
+  }
 
 }
