@@ -1,6 +1,5 @@
 export class Announcement {
     photo : string;
-    description: string[];
-    date: Date;
-    constructor(public title: string, public author: string) {}
+    constructor(public title: string, public author: string, public created_at: number, public description: string) {
+    }
 }

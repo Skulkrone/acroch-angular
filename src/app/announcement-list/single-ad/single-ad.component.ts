@@ -17,7 +17,7 @@ export class SingleAdComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.announcement = new Announcement('', '');
+    this.announcement = new Announcement('', '', 0, '');
     const id = this.route.snapshot.params['id'];
     this.announcementsService.getSingleAnnouncement(+id).then(
       (announcement: Announcement) => {

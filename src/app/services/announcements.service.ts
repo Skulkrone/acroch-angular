@@ -8,7 +8,7 @@ import * as firebase from 'firebase';
 })
 export class AnnouncementsService {
 
-  announcements: Announcement[];
+  announcements: Announcement[] = [];
   announcementsSubject = new Subject<Announcement[]>();
 
   constructor() { }

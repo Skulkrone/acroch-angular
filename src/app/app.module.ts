@@ -19,7 +19,7 @@ const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
   { path: 'announcements', canActivate: [AuthGuardService], component: AnnouncementListComponent },
-  { path: 'announcements/new', canActivate: [AuthGuardService], component: AnnouncementListComponent },
+  { path: 'announcements/new', canActivate: [AuthGuardService], component: AdFormComponent },
   { path: 'announcements/view/:id', canActivate: [AuthGuardService], component: SingleAdComponent },
   { path: '', redirectTo: 'announcements', pathMatch: 'full' },
   { path: '**', redirectTo: 'announcements' }

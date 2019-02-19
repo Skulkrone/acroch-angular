@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AnnouncementsService } from 'src/app/services/announcements.service';
 import { Router } from '@angular/router';
+import { Announcement } from 'src/app/models/Announcement.model';
 
 @Component({
   selector: 'app-ad-form',
@@ -22,8 +23,20 @@ export class AdFormComponent implements OnInit {
 
   initForm() {
     this.announcementForm = this.formBuilder.group({
-      
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      description: '',
+      created_at: ''
     })
   }
 
+  onSaveAnnouncement() {
+    const title = this.announcementForm.get('title').value;
+    const author= this.announcementForm.get('author').value;
+    const created_at = Date.now();
+    const description = this.announcementForm.get('description').value;
+    const newAnnouncement = new Announcement(title, author, created_at, description);
+    this.announcementsService.createNewAnnouncement(newAnnouncement);
+    this.router.navigate(['/announcements']);
+  }
 }

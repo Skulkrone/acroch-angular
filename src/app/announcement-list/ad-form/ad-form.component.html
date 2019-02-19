@@ -1,3 +1,16 @@
-<p>
-  ad-form works!
-</p>
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+    <h2>Enregister une nouvelle annonce</h2>
+    <form [formGroup]="announcementForm" (ngSubmit)="onSaveAnnouncement()">
+      <div class="form-group">
+        <label for="title">Titre de l'annonce</label>
+        <input type="text" formControlName="title" id="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="author">Publiée par : </label>
+        <input type="text" formControlName="author" id="author" class="form-control">
+      </div>
+      <button class="btn btn-success" [disabled]="announcementForm.invalid" type="submit">Enregistrer</button>
+    </form>
+  </div>
+</div>
